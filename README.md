@@ -185,6 +185,19 @@ python train.py --help
 - `similarity_distribution.png`: 相似度分布图
 - `spectra_predictions.png`: 光谱预测对比图
 
+## 🌐 在线预测
+
+1. 运行Flask后端应用
+
+```bash
+python app.py
+```
+
+2. 打开浏览器访问 (http://localhost:5000)
+3. 用户可在线输入SMILES表达式
+4. 实时预测并显示红外光谱
+5. 数据导出：光谱图（PNG格式）及数据（TXT格式）
+
 ## ⚠️ 注意事项
 
 1. **数据格式**: 确保CSV文件格式正确，第一列为SMILES，其余列为光谱数据
