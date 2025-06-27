@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+}
+
+.chart-container {
+    position: relative;
+    height: 65vh;
+    width: 100%;
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+#spectrumChart {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.btn {
+    transition: all 0.2s;
+}
+
+.alert {
+    border-radius: 8px;
+}

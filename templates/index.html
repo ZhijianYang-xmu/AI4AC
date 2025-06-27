@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红外光谱预测系统</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container py-4">
+        <!-- 标题区域 -->
+        <header class="text-center mb-5">
+            <h1 class="display-4">红外光谱预测系统</h1>
+            <p class="lead">输入分子的SMILES表达式，预测其红外光谱</p>
+        </header>
+        
+        <!-- 主要区域 -->
+        <div class="row">
+            <!-- 输入和帮助区域 -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="my-0">分子输入</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="smilesInput" class="form-label">SMILES表达式</label>
+                            <input type="text" class="form-control" id="smilesInput" placeholder="例如：CCO (乙醇), C1CCCCC1 (苯)">
+                        </div>
+                        <button id="predictBtn" class="btn btn-primary w-100">
+                            <span id="predictText">预测红外光谱</span>
+                            <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                        
+                        <div id="errorAlert" class="alert alert-danger mt-3 d-none" role="alert"></div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="my-0">分子信息</h4>
+                    </div>
+                    <div class="card-body">
+                        <p id="moleculeInfo" class="card-text">等待输入分子...</p>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="my-0">下载选项</h4>
+                    </div>
+                    <div class="card-body">
+                        <button id="downloadPlotBtn" class="btn btn-success w-100 mb-2" disabled>
+                            下载光谱图
+                        </button>
+                        <button id="downloadDataBtn" class="btn btn-outline-success w-100" disabled>
+                            下载原始数据
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 光谱图区域 -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="my-0">红外光谱图</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="spectrumChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 帮助区域 -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="my-0">使用帮助</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>SMILES输入示例:</h5>
+                        <ul>
+                            <li><strong>乙醇</strong>: CCO</li>
+                            <li><strong>苯</strong>: C1CCCCC1</li>
+                            <li><strong>丙酮</strong>: CC(=O)C</li>
+                            <li><strong>乙酸</strong>: CC(=O)O</li>
+                            <li><strong>甲苯</strong>: CC1CCCCC1</li>
+                        </ul>
+                        
+                        <div class="alert alert-info">
+                            <strong>注意事项:</strong>
+                            <ul class="mb-0">
+                                <li>请确保SMILES格式正确</li>
+                                <li>复杂分子预测时间可能较长</li>
+                                <li>预测结果仅供参考</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">红外光谱预测系统 &copy; 1.0</p>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
