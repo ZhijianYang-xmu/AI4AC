@@ -1,6 +1,6 @@
 # 🔬 红外光谱预测模型
 
-基于深度学习的分子红外光谱预测系统，通过分子SMILES字符串预测其红外吸收光谱。
+基于深度学习的分子红外光谱预测系统，通过分子SMILES字符串预测其红外吸收光谱
 
 ## ✨ 项目特色
 
@@ -9,18 +9,24 @@
 - 🎨 **可视化分析**: 自动生成高质量的光谱图和训练过程可视化
 - 💻 **交互式界面**: 支持实时输入SMILES并查看预测结果
 - 📈 **性能评估**: 多维度评估模型性能，包括光谱相似度分析
+- 🌐 **在线预测工具**: 用户能够在几秒钟内接收预测的光谱
 
 ## 🏗️ 项目结构
 
 ```
-IR-Spectrum-Predictor/
-├── preprocessing.py      # 数据预处理和特征提取工具函数库
+├── preprocessing.py     # 数据预处理和特征提取工具函数库
 ├── train.py             # 模型训练脚本
 ├── predict.py           # 交互式预测脚本
 ├── README.md            # 项目说明文档
 ├── requirements.txt     # 依赖包列表
+├── app.py               # Flask后端
+└── templates/
+    └── index.html       # 前端页面
+└── static/
+    └── style.css        # 自定义网页样式
+    └── script.js        # 前端交互
 └── data/
-    └── IR_database_full.csv  # 训练数据集（需自行准备）
+    └── IR_database_full.csv  # 训练数据集（自行准备，如有需要可联系作者）
 ```
 
 ## 📋 环境要求
@@ -109,7 +115,7 @@ python predict.py
 
 ### 神经网络结构
 ```
-输入层 (2070维特征)
+输入层 (2072维特征)
     ↓
 全连接层 (1024神经元) + ReLU + BatchNorm + Dropout(0.3)
     ↓
@@ -119,11 +125,11 @@ python predict.py
 ```
 
 ### 训练策略
-- **损失函数**: 稳健MSE损失
+- **损失函数**: MSE损失函数
 - **优化器**: Adam优化器
 - **正则化**: Dropout + 批标准化
 - **早停机制**: 验证损失30轮不改善时停止
-- **学习率调度**: 损失平台期自动降低学习率
+- **学习率调度**: 当损失进去平台期时自动降低学习率
 
 ## 📈 性能评估
 
@@ -157,15 +163,15 @@ python train.py --help
 - `--epochs`: 训练轮次（默认200）
 - `--batch_size`: 批次大小（默认32）
 - `--learning_rate`: 学习率（默认0.0001）
-- `--test_size`: 测试集比例（默认0.15）
+- `--test_size`: 测试集比例（默认0.1）
 
 ### SMILES输入示例
 ```
 乙醇: CCO
-苯: c1ccccc1
+苯: C1CCCCC1
 丙酮: CC(=O)C
 乙酸: CC(=O)O
-甲苯: Cc1ccccc1
+甲苯: CC1CCCCC1
 咖啡因: CN1C=NC2=C1C(=O)N(C(=O)N2C)C
 ```
 
@@ -182,24 +188,10 @@ python train.py --help
 ## ⚠️ 注意事项
 
 1. **数据格式**: 确保CSV文件格式正确，第一列为SMILES，其余列为光谱数据
-2. **内存需求**: 大型数据集可能需要16GB+内存
-3. **训练时间**: 根据数据大小，训练时间从几分钟到几小时不等
+2. **内存需求**: 大型数据集可能需要较大内存
+3. **训练时间**: 整个训练过程可在CPU上完成，整体耗时仅需约10min
 4. **SMILES有效性**: 输入的SMILES必须是RDKit可解析的有效格式
 5. **预测范围**: 模型预测效果取决于训练数据的覆盖范围
-
-## 🤝 贡献指南
-
-欢迎提交Issue和Pull Request！
-
-1. Fork本项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开Pull Request
-
-## 📜 许可证
-
-本项目采用MIT许可证。详见`LICENSE`文件。
 
 ## 🙏 致谢
 
@@ -211,7 +203,7 @@ python train.py --help
 
 如有问题或建议，请通过以下方式联系：
 - 提交GitHub Issue
-- 发送邮件至：your.email@example.com
+- 发送邮件至：37420222204463@stu.xmu.edu.cn
 
 ---
 
