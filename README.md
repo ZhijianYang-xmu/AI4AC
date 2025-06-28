@@ -168,10 +168,10 @@ python train.py --help
 ### SMILES输入示例
 ```
 乙醇: CCO
-苯: C1CCCCC1
+苯: c1ccccc1
 丙酮: CC(=O)C
 乙酸: CC(=O)O
-甲苯: CC1CCCCC1
+甲苯: Cc1ccccc1
 咖啡因: CN1C=NC2=C1C(=O)N(C(=O)N2C)C
 ```
 
