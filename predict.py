@@ -223,10 +223,10 @@ class InteractiveIRPredictor:
 
 SMILES输入示例:
   - 乙醇: CCO
-  - 苯: C1CCCCC1  
+  - 苯: c1ccccc1  
   - 丙酮: CC(=O)C
   - 乙酸: CC(=O)O
-  - 甲苯: CC1CCCCC1
+  - 甲苯: Cc1ccccc1
 
 功能说明:
   ✓ 输入SMILES后会自动识别分子名称
